@@ -33,5 +33,14 @@ namespace SimpleApi.Test
             Assert.Equal(StatusCodes.Status200OK, actionResult.StatusCode);
             Assert.Equal(arr, actionResult.Value as string[]);
         }
+        [Fact]
+        public void GetSortArray()
+        {
+            var actionResult = controller.Sort() as OkObjectResult;
+            string[] expected = new[] { "Ivan", "Olga", "Ruslan", "Sofia" };
+            Assert.IsType<OkObjectResult>(actionResult);
+            Assert.Equal(StatusCodes.Status200OK, actionResult.StatusCode);
+            Assert.Equal(expected, actionResult.Value as string[]);
+        }
     }
 }

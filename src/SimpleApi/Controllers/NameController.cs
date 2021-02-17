@@ -17,5 +17,13 @@ namespace SimpleApi.Controllers
         public IActionResult Get() => Ok(Names);
         [HttpGet]
         public IActionResult Get(int id) => id < Names.Length ? Ok(Names[id]) : NotFound();
+        [HttpGet]
+        public IActionResult Sort()
+        {
+            string[] arr=new string[Names.Length];
+            Array.Copy(Names, arr, Names.Length);
+            Array.Sort(arr);
+            return Ok(arr);
+        }
     }
 }
